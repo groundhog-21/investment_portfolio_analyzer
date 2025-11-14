@@ -12,7 +12,7 @@ The Day 1 notebook (`01_build_benchmark.ipynb`) performs the following:
 
 - Defines a benchmark using a small set of tickers.
 - Assigns simple benchmark weights.
-- Fetches 15 years of daily historical price data using `yfinance`.
+- Fetches 10 years of daily historical price data using `yfinance`.
 - Fetches fund names (sanity check only).
 - Saves results into the `/data` folder:
   - `benchmark_tickers.json`
@@ -31,7 +31,7 @@ The Day 2 notebook (`02_build_portfolio.ipynb`) performs the following:
 
 - Defines the portfolio tickers (the actual holdings to be analyzed).
 - Assigns portfolio weights (normalized so they sum to 1).
-- Fetches 15 years of daily historical price data using `yfinance`.
+- Fetches 10 years of daily historical price data using `yfinance`.
 - Fetches fund names (sanity check only).
 - Saves results into the `/data` folder:
   - `portfolio_tickers.json`
@@ -40,7 +40,22 @@ The Day 2 notebook (`02_build_portfolio.ipynb`) performs the following:
   - `portfolio_prices.csv`
   - `portfolio_prices.parquet`
 
-The portfolio dataset mirrors the benchmark structure from Day 1 and prepares the project for Day 3 performance comparison.
+---
+
+## 📅 Day 3 — Compare Portfolio vs Benchmark
+
+The Day 3 notebook (`03_compare_portfolio_vs_benchmark.ipynb`) performs the following:
+
+1. Loads benchmark and portfolio price data.
+2. Computes **cumulative returns** over the entire data period.
+3. Computes **calendar-year annualized returns**.
+4. Computes **full-period annualized return**.
+5. Calculates basic **risk/return metrics** (volatility, Sharpe ratio).
+6. Visualizes cumulative return comparison.
+7. Visualizes calendar-year return comparison.
+8. Visualizes full-period annualized return comparison.
+
+Day 3 provides the first full performance comparison between the benchmark and portfolio datasets produced in Days 1 and 2.
 
 ---
 
@@ -59,9 +74,10 @@ investment_portfolio_analyzer/
 │   ├── portfolio_names.json
 │   ├── portfolio_prices.csv
 │   └── portfolio_prices.parquet
-├── notebooks/                # Jupyter notebooks for each development step
+├── notebooks/
 │   ├── 01_build_benchmark.ipynb
-│   └── 02_build_portfolio.ipynb
+│   ├── 02_build_portfolio.ipynb
+│   └── 03_compare_portfolio_vs_benchmark.ipynb
 ├── README.md
 ├── requirements.txt
 ├── LICENSE
@@ -69,7 +85,7 @@ investment_portfolio_analyzer/
 └── .gitattributes
 ```
 
-> Note: the `data/` folder is ignored by git, so these files are created locally when you run the notebooks.
+> Note: The `data/` folder is ignored by git. Files are generated locally when you run the notebooks.
 
 ---
 
@@ -111,7 +127,8 @@ pip install -r requirements.txt
 
 ## Future Work
 
-- **Day 3:** Compare portfolio vs. benchmark performance using historical return calculations and simple risk metrics.
+- Additional analysis (drawdowns, risk decomposition, rolling performance)
+- Optional modularization into lightweight `.py` utilities
 
 ---
 
