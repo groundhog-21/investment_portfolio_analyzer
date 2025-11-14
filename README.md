@@ -12,7 +12,7 @@ The Day 1 notebook (`01_build_benchmark.ipynb`) performs the following:
 
 - Defines a benchmark using a small set of tickers.
 - Assigns simple benchmark weights.
-- Fetches 10 years of daily historical price data using `yfinance`.
+- Fetches 15 years of daily historical price data using `yfinance`.
 - Fetches fund names (sanity check only).
 - Saves results into the `/data` folder:
   - `benchmark_tickers.json`
@@ -31,7 +31,7 @@ The Day 2 notebook (`02_build_portfolio.ipynb`) performs the following:
 
 - Defines the portfolio tickers (the actual holdings to be analyzed).
 - Assigns portfolio weights (normalized so they sum to 1).
-- Fetches 10 years of daily historical price data using `yfinance`.
+- Fetches 15 years of daily historical price data using `yfinance`.
 - Fetches fund names (sanity check only).
 - Saves results into the `/data` folder:
   - `portfolio_tickers.json`
