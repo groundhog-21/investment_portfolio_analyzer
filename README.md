@@ -25,12 +25,42 @@ This benchmark dataset will be used in later steps for portfolio comparison.
 
 ---
 
+## 📅 Day 2 — Build the Portfolio
+
+The Day 2 notebook (`02_build_portfolio.ipynb`) performs the following:
+
+- Defines the portfolio tickers.
+- Assigns portfolio weights.
+- Fetches 10 years of daily historical price data using `yfinance`.
+- Fetches fund names (sanity check only).
+- Saves results into the `/data` folder:
+  - `portfolio_tickers.json`
+  - `portfolio_weights.json`
+  - `portfolio_names.json`
+  - `portfolio_prices.csv`
+  - `portfolio_prices.parquet`
+
+This portfolio dataset mirrors the benchmark structure from Day 1 and prepares the project for Day 3 performance comparison.
+
+---
+
 ## Repository Structure
 
 investment_portfolio_analyzer/
-├── data/                     # All saved data files (ignored by git)
-├── notebooks/                # Jupyter notebooks for each development step
-│   └── 01_build_benchmark.ipynb
+├── data/
+│   ├── benchmark_tickers.json
+│   ├── benchmark_weights.json
+│   ├── benchmark_names.json
+│   ├── benchmark_prices.csv
+│   ├── benchmark_prices.parquet
+│   ├── portfolio_tickers.json
+│   ├── portfolio_weights.json
+│   ├── portfolio_names.json
+│   ├── portfolio_prices.csv
+│   └── portfolio_prices.parquet
+├── notebooks/
+│   ├── 01_build_benchmark.ipynb
+│   └── 02_build_portfolio.ipynb
 ├── README.md
 ├── requirements.txt
 ├── LICENSE
