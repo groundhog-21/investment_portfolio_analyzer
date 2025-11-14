@@ -35,7 +35,7 @@ The Day 2 notebook (`02_build_portfolio.ipynb`) performs the following:
 - Fetches fund names (sanity check only).
 - Saves results into the `/data` folder:
   - `portfolio_tickers.json`
-  - `portfolio_weights.json`  <!-- normalized weights -->
+  - `portfolio_weights.json` (normalized weights)
   - `portfolio_names.json`
   - `portfolio_prices.csv`
   - `portfolio_prices.parquet`
