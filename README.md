@@ -29,25 +29,26 @@ This benchmark dataset will be used in later steps for portfolio comparison.
 
 The Day 2 notebook (`02_build_portfolio.ipynb`) performs the following:
 
-- Defines the portfolio tickers.
-- Assigns portfolio weights.
+- Defines the portfolio tickers (the actual holdings to be analyzed).
+- Assigns portfolio weights (normalized so they sum to 1).
 - Fetches 10 years of daily historical price data using `yfinance`.
 - Fetches fund names (sanity check only).
 - Saves results into the `/data` folder:
   - `portfolio_tickers.json`
-  - `portfolio_weights.json`
+  - `portfolio_weights.json`  <!-- normalized weights -->
   - `portfolio_names.json`
   - `portfolio_prices.csv`
   - `portfolio_prices.parquet`
 
-This portfolio dataset mirrors the benchmark structure from Day 1 and prepares the project for Day 3 performance comparison.
+The portfolio dataset mirrors the benchmark structure from Day 1 and prepares the project for Day 3 performance comparison.
 
 ---
 
 ## Repository Structure
 
+```text
 investment_portfolio_analyzer/
-├── data/
+├── data/                     # All saved data files (ignored by git)
 │   ├── benchmark_tickers.json
 │   ├── benchmark_weights.json
 │   ├── benchmark_names.json
@@ -58,7 +59,7 @@ investment_portfolio_analyzer/
 │   ├── portfolio_names.json
 │   ├── portfolio_prices.csv
 │   └── portfolio_prices.parquet
-├── notebooks/
+├── notebooks/                # Jupyter notebooks for each development step
 │   ├── 01_build_benchmark.ipynb
 │   └── 02_build_portfolio.ipynb
 ├── README.md
@@ -66,6 +67,9 @@ investment_portfolio_analyzer/
 ├── LICENSE
 ├── .gitignore
 └── .gitattributes
+```
+
+> Note: the `data/` folder is ignored by git, so these files are created locally when you run the notebooks.
 
 ---
 
@@ -99,21 +103,18 @@ pip install -r requirements.txt
 
 ## Requirements
 
-Python 3.12+
-Jupyter or VS Code with the Jupyter extension
-Internet access (for yfinance price downloads)
+- Python 3.12+
+- Jupyter or VS Code with the Jupyter extension
+- Internet access (for `yfinance` price downloads)
 
 ---
 
 ## Future Work
 
-Day 2: Build the portfolio dataset using the same unified structure.
-Day 3: Compare portfolio vs. benchmark performance using historical return calculations.
+- **Day 3:** Compare portfolio vs. benchmark performance using historical return calculations and simple risk metrics.
 
 ---
 
 ## License
 
-This project is distributed under the MIT License. See LICENSE for details.
-
----
+This project is distributed under the MIT License. See `LICENSE` for details.
