@@ -1,51 +1,22 @@
-# ----------------------------------------
-# 🧠 Python build & cache
-# ----------------------------------------
+# Python cache
 __pycache__/
 *.py[cod]
 *.pyo
-*.pyd
 
-# ----------------------------------------
-# 🧰 Virtual environments
-# ----------------------------------------
-.venv/
-env/
+# Virtual environments
 venv/
+.env/
 
-# ----------------------------------------
-# 📓 Jupyter Notebooks
-# ----------------------------------------
+# VS Code settings
+.vscode/
+
+# Jupyter notebook checkpoints
 .ipynb_checkpoints/
 
-# ----------------------------------------
-# 💻 IDE / Editor settings
-# ----------------------------------------
-.vscode/
-.idea/
+# Ignore ALL files in data except .gitkeep
+data/*
+!data/.gitkeep
 
-# ----------------------------------------
-# 🗂️ Data & Outputs (sensitive / local)
-# ----------------------------------------
-data/
-!data/.gitkeep       # keep the folder itself tracked (empty placeholder)
-logs/
-*.log
-
-# ----------------------------------------
-# 🧾 Temporary / backup files
-# ----------------------------------------
-*.tmp
-*.bak
-
-# ----------------------------------------
-# 🌍 OS metadata
-# ----------------------------------------
+# System files
 .DS_Store
 Thumbs.db
-
-# ----------------------------------------
-# 🧪 Environment files / secrets
-# ----------------------------------------
-.env
-.env.*

@@ -1,56 +1,69 @@
-INVESTMENT PORTFOLIO ANALYZER
-=============================
+# Investment Portfolio Analyzer
 
-Purpose
--------
-A Python-based tool for analyzing the performance of investment portfolios
-against a blended benchmark index composed of equities, fixed income,
-and liquidity components.
+A simplified, lightweight Python project designed to analyze an investment
+portfolio relative to a custom benchmark using real historical price data.
 
-Daily Python Challenge - Day 1
-------------------------------
-This project was initiated as part of a Daily Python Challenge series.
-Day 1 focused on:
- - Selecting representative tickers from yfinance to construct a portfolio benchmark 
- - Building a 10+ year dataset of adjusted prices for the benchmark
- - Establishing target weights for the benchmark components
- - Saving benchmark data and metadata in reusable formats (Parquet, CSV, JSON)
+This project is structured around clear daily steps:
 
-Folder Structure
-----------------
+---
+
+## 📅 Day 1 — Build the Benchmark
+
+The Day 1 notebook (`01_build_benchmark.ipynb`) does the following:
+
+- Defines a benchmark using a small set of tickers.
+- Assigns simple benchmark weights.
+- Fetches 10 years of daily historical price data using `yfinance`.
+- Fetches fund names (sanity check only).
+- Saves results into the `/data` folder:
+  - `benchmark_tickers.json`
+  - `benchmark_weights.json`
+  - `benchmark_names.json`
+  - `benchmark_prices.csv`
+  - `benchmark_prices.parquet`
+
+The benchmark data will be used in later steps for portfolio comparison.
+
+---
+
+## Repository Structure
+
 investment_portfolio_analyzer/
-│
-├── notebooks/
-│   └── 01_build_benchmark.ipynb     ← Day 1 notebook (interactive)
-│
-├── portfolio_analyzer/
-│   ├── __init__.py
-│   └── build_benchmark.py           ← Core benchmark-building logic
-│
-├── data/                            ← Local data only (excluded from Git)
-│   ├── benchmark_tickers.json            ← User-defined benchmark tickers by asset class
-│   ├── benchmark_weights.json            ← Calculated benchmark weights (sum = 1.0)
-│   ├── benchmark_metadata.json           ← ETF metadata (fund name, category, inception date, etc.)
-│   ├── benchmark_prices_named.csv        ← Benchmark prices (daily adjusted close)
-│   ├── benchmark_prices_named.parquet    ← Same data in compact Parquet format
-│   └── .gitkeep                          ← Placeholder to retain folder structure
-│
+├── data/ # All saved data files
+├── notebooks/ # Jupyter notebooks for each development step
+│ └── 01_build_benchmark.ipynb
+├── README.md
 ├── requirements.txt
-├── .gitignore
-├── .gitattributes
 ├── LICENSE
-└── README.txt
+├── .gitignore
+└── .gitattributes
 
+---
 
-Getting Started
----------------
-1. Create a virtual environment:
-       python -m venv .venv
-       .venv\Scripts\activate   (Windows)
-2. Install dependencies:
-       pip install -r requirements.txt
-3. Run the Day 1 notebook in /notebooks.
+## Installation
 
-License
--------
-MIT License – see LICENSE file for details.
+Create a virtual environment (optional but recommended):
+
+python -m venv venv
+source venv/bin/activate   # macOS / Linux
+venv\Scripts\activate      # Windows
+
+# Install dependencies:
+pip install -r requirements.txt
+
+---
+
+## Requirements
+
+Python 3.12+
+Jupyter or VS Code with the Jupyter extension
+Internet access (for yfinance price downloads)
+
+---
+
+## Future Work
+
+Day 2: Build the portfolio data with the same unified structure.
+Day 3: Compare portfolio vs. benchmark performance.
+
+---

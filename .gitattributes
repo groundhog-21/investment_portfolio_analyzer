@@ -1,15 +1,10 @@
-# Text files
-*.py text eol=lf
-*.ipynb text eol=lf
-*.md text eol=lf
-*.txt text eol=lf
-*.csv text eol=lf
-*.json text eol=lf
-
-# Binary files
-*.parquet binary
-*.pkl binary
-*.xlsx binary
-
-# Auto detect text/binary and handle Unicode
+# Handle line endings consistently
 * text=auto
+
+# Keep data files untouched
+*.parquet binary
+*.csv text
+*.json text
+
+# Jupyter notebooks
+*.ipynb text
