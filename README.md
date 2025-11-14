@@ -41,19 +41,29 @@ investment_portfolio_analyzer/
 
 ## Installation
 
-1. Create a virtual environment (optional but recommended)
+### 1. Create a virtual environment (optional but recommended)
 
+```bash
 python -m venv venv
+```
 
 Activate it:
-macOS / Linux
+
+**macOS / Linux**
+```bash
 source venv/bin/activate
+```
 
-Windows
+**Windows**
+```bash
 venv\Scripts\activate
+```
 
-2. Install dependencies
+### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
 ---
 
