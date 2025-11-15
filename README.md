@@ -1,157 +1,126 @@
-📘 Investment Portfolio Analyzer
+# 📘 Investment Portfolio Analyzer
+A lightweight, reproducible Python workflow for:
 
-A lightweight, reproducible Python workflow for constructing a benchmark, modeling an investment portfolio, and comparing their historical performance over a consistent rolling 15-year window.
+* **constructing a benchmark**
+* **modeling an investment portfolio**
+* **comparing their historical performance over a consistent rolling 15-year window**
 
-📅 Day 1 — Build the Benchmark
+This project is organized into four development notebooks (Days 1–4), each building on the previous step.
 
-Notebook: 01_build_benchmark.ipynb
+---
+
+## 📅 Day 1 — Build the Benchmark
+**Notebook:** `01_build_benchmark.ipynb`
 
 Day 1 constructs the primary benchmark used throughout the project.
 
 This notebook:
+* Defines benchmark tickers and weights
+* Downloads 15 years of daily Close prices ending today
+* Retrieves fund names for verification
+* Computes the benchmark price series
+* Saves benchmark artifacts to the `/data` directory
 
-Defines benchmark tickers and weights
+**Saved files:**
+* `benchmark_tickers.json`
+* `benchmark_weights.json`
+* `benchmark_names.json`
+* `benchmark_prices.csv`
+* `benchmark_prices.parquet`
 
-Downloads 15 years of daily Close prices ending today
+---
 
-Retrieves fund names for verification
-
-Computes the benchmark price series
-
-Saves benchmark artifacts to the /data directory
-
-Saved files:
-
-benchmark_tickers.json
-
-benchmark_weights.json
-
-benchmark_names.json
-
-benchmark_prices.csv
-
-benchmark_prices.parquet
-
-📅 Day 2 — Construct the Portfolio
-
-Notebook: 02_build_portfolio.ipynb
+## 📅 Day 2 — Construct the Portfolio
+**Notebook:** `02_build_portfolio.ipynb`
 
 Day 2 defines the investment portfolio to be compared with the benchmark.
 
 This notebook:
+* Defines portfolio tickers and asset classes
+* Defines user-input weights and computes normalized weights
+* Downloads the same 15-year Close price window
+* Retrieves fund names for verification
+* Saves portfolio artifacts to the `/data` directory
 
-Defines portfolio tickers and asset classes
+**Saved files:**
+* `portfolio_tickers.json`
+* `normalized_portfolio_weights.json`
+* `portfolio_names.json`
+* `portfolio_prices.csv`
+* `portfolio_prices.parquet`
 
-Defines user-input weights and computes normalized weights
+---
 
-Downloads the same 15-year Close price window
+## 📅 Day 3 — Compare Portfolio vs Benchmark
+**Notebook:** `03_compare_portfolio_vs_benchmark.ipynb`
 
-Retrieves fund names for verification
-
-Saves portfolio artifacts to /data
-
-Saved files:
-
-portfolio_tickers.json
-
-normalized_portfolio_weights.json
-
-portfolio_names.json
-
-portfolio_prices.csv
-
-portfolio_prices.parquet
-
-📅 Day 3 — Compare Portfolio vs Benchmark
-
-Notebook: 03_compare_portfolio_vs_benchmark.ipynb
+Day 3 performs the core analytical comparison.
 
 This notebook:
-
-Loads benchmark & portfolio price data
-
-Aligns daily return history over the common 15-year window
-
-Computes:
-
-Cumulative returns
-
-Calendar-year returns
-
-Full-period annualized returns
-
-Annualized volatility
-
-Sharpe ratio (RF = 0)
-
-Produces comparison charts
+* Loads benchmark & portfolio price data
+* Aligns daily return history over the common 15-year window
+* Computes:
+    * cumulative returns
+    * calendar-year returns
+    * full-period annualized returns
+    * annualized volatility
+    * Sharpe ratio (RF = 0)
+* Produces comparison charts
 
 No new files are saved in Day 3.
 
-📅 Day 4 — Additional Benchmarks
+---
 
-Notebook: 04_additional_benchmarks.ipynb
+## 📅 Day 4 — Additional Benchmarks
+**Notebook:** `04_additional_benchmarks.ipynb`
 
-Day 4 extends the analysis by introducing three additional benchmark allocation strategies:
+Day 4 extends the analysis by adding three additional benchmark allocation strategies:
 
-U.S. benchmark (VTI + BND)
-
-Ex-U.S. developed benchmark (VEA + IGOV)
-
-U.S. aggressive benchmark (VTI + BND)
+* U.S. benchmark (`VTI` + `BND`)
+* Ex-U.S. developed benchmark (`VEA` + `IGOV`)
+* U.S. aggressive benchmark (`VTI` + `BND`)
 
 This notebook:
+* Downloads 15-year Close price history for benchmark ETFs
+* Computes weighted daily returns
+* Compares cumulative, annualized, and calendar-year performance
+* Produces multi-benchmark comparison charts
 
-Downloads 15-year Close price history for benchmark ETFs
+No Day 4 artifacts are saved to `/data`.
 
-Computes weighted daily returns
+---
 
-Compares cumulative, annualized, and calendar-year performance
+## 📁 Repository Structure
 
-Produces benchmark comparison charts
+investment_portfolio_analyzer/ │ ├── data/ │ └── .gitkeep │ ├── notebooks/ │ ├── 01_build_benchmark.ipynb │ ├── 02_build_portfolio.ipynb │ ├── 03_compare_portfolio_vs_benchmark.ipynb │ └── 04_additional_benchmarks.ipynb │ ├── README.md ├── requirements.txt ├── LICENSE ├── .gitignore └── .gitattributes
 
-No Day 4 artifacts are saved to /data.
 
-📁 Repository Structure
-investment_portfolio_analyzer/
-│
-├── data/
-│   └── .gitkeep
-│
-├── notebooks/
-│   ├── 01_build_benchmark.ipynb
-│   ├── 02_build_portfolio.ipynb
-│   ├── 03_compare_portfolio_vs_benchmark.ipynb
-│   └── 04_additional_benchmarks.ipynb
-│
-├── README.md
-├── requirements.txt
-├── LICENSE
-├── .gitignore
-└── .gitattributes
+---
 
-⚙️ Installation
-
+## ⚙️ Installation
 Create a virtual environment (optional but recommended):
 
+```bash
 python -m venv venv
+```
 
+Activate it: macOS / Linux
 
-Activate it:
-
-macOS / Linux
-
+```bash
 source venv/bin/activate
-
+```
 
 Windows
 
+```bash
 venv\Scripts\activate
-
+```
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
+```
 
 📦 Requirements
 pandas
