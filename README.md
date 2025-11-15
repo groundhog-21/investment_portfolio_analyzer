@@ -1,137 +1,162 @@
-# Investment Portfolio Analyzer
+📘 Investment Portfolio Analyzer
 
-A simplified, lightweight Python project designed to analyze an investment portfolio relative to a custom benchmark using real historical price data.
+A lightweight, reproducible Python workflow for constructing a benchmark, modeling an investment portfolio, and comparing their historical performance over a consistent rolling 15-year window.
 
-This project is structured around clear, incremental daily steps.
+📅 Day 1 — Build the Benchmark
 
----
+Notebook: 01_build_benchmark.ipynb
 
-## 📅 Day 1 — Build the Benchmark
+Day 1 constructs the primary benchmark used throughout the project.
 
-The Day 1 notebook (`01_build_benchmark.ipynb`) performs the following:
+This notebook:
 
-- Defines a benchmark using a small set of tickers.
-- Assigns simple benchmark weights.
-- Fetches 10 years of daily historical price data using `yfinance`.
-- Fetches fund names (sanity check only).
-- Saves results into the `/data` folder:
-  - `benchmark_tickers.json`
-  - `benchmark_weights.json`
-  - `benchmark_names.json`
-  - `benchmark_prices.csv`
-  - `benchmark_prices.parquet`
+Defines benchmark tickers and weights
 
-This benchmark dataset will be used in later steps for portfolio comparison.
+Downloads 15 years of daily Close prices ending today
 
----
+Retrieves fund names for verification
 
-## 📅 Day 2 — Build the Portfolio
+Computes the benchmark price series
 
-The Day 2 notebook (`02_build_portfolio.ipynb`) performs the following:
+Saves benchmark artifacts to the /data directory
 
-- Defines the portfolio tickers (the actual holdings to be analyzed).
-- Assigns portfolio weights (normalized so they sum to 1).
-- Fetches 10 years of daily historical price data using `yfinance`.
-- Fetches fund names (sanity check only).
-- Saves results into the `/data` folder:
-  - `portfolio_tickers.json`
-  - `portfolio_weights.json` (normalized weights)
-  - `portfolio_names.json`
-  - `portfolio_prices.csv`
-  - `portfolio_prices.parquet`
+Saved files:
 
----
+benchmark_tickers.json
 
-## 📅 Day 3 — Compare Portfolio vs Benchmark
+benchmark_weights.json
 
-The Day 3 notebook (`03_compare_portfolio_vs_benchmark.ipynb`) performs the following:
+benchmark_names.json
 
-1. Loads benchmark and portfolio price data.
-2. Computes **cumulative returns** over the entire data period.
-3. Computes **calendar-year annualized returns**.
-4. Computes **full-period annualized return**.
-5. Calculates basic **risk/return metrics** (volatility, Sharpe ratio).
-6. Visualizes cumulative return comparison.
-7. Visualizes calendar-year return comparison.
-8. Visualizes full-period annualized return comparison.
+benchmark_prices.csv
 
-Day 3 provides the first full performance comparison between the benchmark and portfolio datasets produced in Days 1 and 2.
+benchmark_prices.parquet
 
----
+📅 Day 2 — Construct the Portfolio
 
-## Repository Structure
+Notebook: 02_build_portfolio.ipynb
 
-```text
+Day 2 defines the investment portfolio to be compared with the benchmark.
+
+This notebook:
+
+Defines portfolio tickers and asset classes
+
+Defines user-input weights and computes normalized weights
+
+Downloads the same 15-year Close price window
+
+Retrieves fund names for verification
+
+Saves portfolio artifacts to /data
+
+Saved files:
+
+portfolio_tickers.json
+
+normalized_portfolio_weights.json
+
+portfolio_names.json
+
+portfolio_prices.csv
+
+portfolio_prices.parquet
+
+📅 Day 3 — Compare Portfolio vs Benchmark
+
+Notebook: 03_compare_portfolio_vs_benchmark.ipynb
+
+This notebook:
+
+Loads benchmark & portfolio price data
+
+Aligns daily return history over the common 15-year window
+
+Computes:
+
+Cumulative returns
+
+Calendar-year returns
+
+Full-period annualized returns
+
+Annualized volatility
+
+Sharpe ratio (RF = 0)
+
+Produces comparison charts
+
+No new files are saved in Day 3.
+
+📅 Day 4 — Additional Benchmarks
+
+Notebook: 04_additional_benchmarks.ipynb
+
+Day 4 extends the analysis by introducing three additional benchmark allocation strategies:
+
+U.S. benchmark (VTI + BND)
+
+Ex-U.S. developed benchmark (VEA + IGOV)
+
+U.S. aggressive benchmark (VTI + BND)
+
+This notebook:
+
+Downloads 15-year Close price history for benchmark ETFs
+
+Computes weighted daily returns
+
+Compares cumulative, annualized, and calendar-year performance
+
+Produces benchmark comparison charts
+
+No Day 4 artifacts are saved to /data.
+
+📁 Repository Structure
 investment_portfolio_analyzer/
-├── data/                     # All saved data files (ignored by git)
-│   ├── benchmark_tickers.json
-│   ├── benchmark_weights.json
-│   ├── benchmark_names.json
-│   ├── benchmark_prices.csv
-│   ├── benchmark_prices.parquet
-│   ├── portfolio_tickers.json
-│   ├── portfolio_weights.json
-│   ├── portfolio_names.json
-│   ├── portfolio_prices.csv
-│   └── portfolio_prices.parquet
+│
+├── data/
+│   └── .gitkeep
+│
 ├── notebooks/
 │   ├── 01_build_benchmark.ipynb
 │   ├── 02_build_portfolio.ipynb
-│   └── 03_compare_portfolio_vs_benchmark.ipynb
+│   ├── 03_compare_portfolio_vs_benchmark.ipynb
+│   └── 04_additional_benchmarks.ipynb
+│
 ├── README.md
 ├── requirements.txt
 ├── LICENSE
 ├── .gitignore
 └── .gitattributes
-```
 
-> Note: The `data/` folder is ignored by git. Files are generated locally when you run the notebooks.
+⚙️ Installation
 
----
+Create a virtual environment (optional but recommended):
 
-## Installation
-
-### 1. Create a virtual environment (optional but recommended)
-
-```bash
 python -m venv venv
-```
+
 
 Activate it:
 
-**macOS / Linux**
-```bash
+macOS / Linux
+
 source venv/bin/activate
-```
 
-**Windows**
-```bash
+
+Windows
+
 venv\Scripts\activate
-```
 
-### 2. Install dependencies
 
-```bash
+Install dependencies:
+
 pip install -r requirements.txt
-```
 
----
-
-## Requirements
-
-- Python 3.12+
-- Jupyter or VS Code with the Jupyter extension
-- Internet access (for `yfinance` price downloads)
-
----
-
-## Future Work
-
-- Additional analysis (drawdowns, risk decomposition, rolling performance)
-- Optional modularization into lightweight `.py` utilities
-
----
-
-## License
-
-This project is distributed under the MIT License. See `LICENSE` for details.
+📦 Requirements
+pandas
+numpy
+matplotlib
+yfinance
+pyarrow
+python-dateutil

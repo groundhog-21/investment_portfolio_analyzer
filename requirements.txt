@@ -1,5 +1,6 @@
-yfinance
 pandas
-pyarrow
+numpy
 matplotlib
-jupyter
+yfinance
+pyarrow
+python-dateutil
