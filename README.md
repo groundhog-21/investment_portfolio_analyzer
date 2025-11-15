@@ -124,8 +124,13 @@ pip install -r requirements.txt
 
 📦 Requirements
 pandas
+
 numpy
+
 matplotlib
+
 yfinance
+
 pyarrow
+
 python-dateutil
